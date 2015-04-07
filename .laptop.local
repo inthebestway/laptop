@@ -1,0 +1,23 @@
+#!/bin/sh
+
+brew_cask_install 'firefox'
+brew_cask_install 'iterm2'
+brew_cask_install 'sublime-text3'
+
+#brew_install_or_upgrade 'vim'
+#brew_install_or_upgrade 'node'
+#brew_install_or_upgrade 'ctags'
+
+brew_install_or_upgrade 'mongo'
+brew_install_or_upgrade 'r'
+brew_cask_install 'rstudio'
+
+brew_install_or_upgrade 'pyenv'
+pyenv install 3.4
+
+
+brew_cask_install 'github'
+
+if [ ! -f "$HOME/.ssh/github_rsa.pub" ]; then
+open ~/Applications/GitHub.app
+fi
