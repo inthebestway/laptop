@@ -5,15 +5,23 @@ brew_install_or_upgrade 'brew-cask'
 
 brew cask install 'firefox'
 brew cask install 'iterm2'
-brew cask install sublime-text
+brew cask install 'sublime-text'
 brew cask install 'virtualbox'
 brew cask install 'vagrant'
 brew cask install 'sourcetree'
 brew cask install 'jing'
+brew_install_or_upgrade 'shellcheck'
+
+brew cask install 'xquartz'
+brew_install_or_upgrade homebrew/science/r
 
 
 brew_install_or_upgrade 'jq'
-#brew_install_or_upgrade 'json2csv'
+
+brew_install_or_upgrade 'go'
+
+#TODO: set gopath & gobin
+#go get github.com/jehiah/json2csv 'json2csv'
 
 
 brew_install_or_upgrade 'gist'
