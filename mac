@@ -134,8 +134,8 @@ brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'hub'
 
 brew_install_or_upgrade 'mongo'
-brew_install_or_upgrade 'r'
-brew_cask_install 'rstudio'
+#brew_install_or_upgrade 'r'
+#brew_cask_install 'rstudio'
 
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
