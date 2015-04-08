@@ -53,6 +53,7 @@ case "$SHELL" in
     ;;
 esac
 
+
 brew_install_or_upgrade() {
   if brew_is_installed "$1"; then
     if brew_is_upgradable "$1"; then
@@ -86,8 +87,6 @@ brew_tap() {
 brew_expand_alias() {
   brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
-
-brew_launchctl_restart() 
 
 gem_install_or_update() {
   if gem list "$1" --installed > /dev/null; then
@@ -148,7 +147,7 @@ brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
 brew_install_or_upgrade 'libyaml'
 
-#ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
+ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
 
 eval "$(rbenv init - zsh)"
 

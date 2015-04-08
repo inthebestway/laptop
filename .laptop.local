@@ -10,6 +10,9 @@ brew_cask_install 'jing'
 
 
 brew_install_or_upgrade 'jq'
+brew_install_or_upgrade 'json2csv'
+
+
 brew_install_or_upgrade 'gist'
 brew_install_or_upgrade 'screen'
 
@@ -25,15 +28,15 @@ pyenv install 3.4
 
 EXTRAS=~/devel/other
 mkdir -p $EXTRAS
-cd $EXTRAS
+#cd $EXTRAS
 # Data science toolkit
 
-git clone https://github.com/jeroenjanssens/data-science-toolbox.git
-cd data-science-toolbox
-D=$(pwd)
-for f in $(ls | grep -v README.md) ; do
-ln -s $D/$f ~/bin/
-done
+#git clone https://github.com/jeroenjanssens/data-science-toolbox.git
+#cd data-science-toolbox
+#D=$(pwd)
+#for f in $(ls | grep -v README.md) ; do
+#	ln -s $D/$f ~/bin/
+#done
 
 
 
