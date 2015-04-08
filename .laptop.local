@@ -3,17 +3,38 @@
 brew_cask_install 'firefox'
 brew_cask_install 'iterm2'
 brew_cask_install 'sublime-text3'
+brew_cask_install 'virtualbox'
+brew_cask_install 'vagrant'
+brew_cask_install 'sourcetree'
+brew_cask_install 'jing'
+
+
+brew_install_or_upgrade 'jq'
+brew_install_or_upgrade 'gist'
+brew_install_or_upgrade 'screen'
 
 #brew_install_or_upgrade 'vim'
 #brew_install_or_upgrade 'node'
 #brew_install_or_upgrade 'ctags'
 
-brew_install_or_upgrade 'mongo'
-brew_install_or_upgrade 'r'
-brew_cask_install 'rstudio'
-
 brew_install_or_upgrade 'pyenv'
+brew_install_or_upgrade pyenv-virtualenv
+echo "eval \"$(pyenv virtualenv-init -)\"" > ~/.bash_profile
 pyenv install 3.4
+
+
+EXTRAS=~/devel/other
+mkdir -p $EXTRAS
+cd $EXTRAS
+# Data science toolkit
+
+git clone https://github.com/jeroenjanssens/data-science-toolbox.git
+cd data-science-toolbox
+D=$(pwd)
+for f in $(ls | grep -v README.md) ; do
+ln -s $D/$f ~/bin/
+done
+
 
 
 brew_cask_install 'github'

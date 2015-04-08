@@ -87,20 +87,7 @@ brew_expand_alias() {
   brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
 
-brew_launchctl_restart() {
-  local name="$(brew_expand_alias "$1")"
-  local domain="homebrew.mxcl.$name"
-  local plist="$domain.plist"
-
-  fancy_echo "Restarting %s ..." "$1"
-  mkdir -p "$HOME/Library/LaunchAgents"
-  ln -sfv "/usr/local/opt/$name/$plist" "$HOME/Library/LaunchAgents"
-
-  if launchctl list | grep -Fq "$domain"; then
-    launchctl unload "$HOME/Library/LaunchAgents/$plist" >/dev/null
-  fi
-  launchctl load "$HOME/Library/LaunchAgents/$plist" >/dev/null
-}
+brew_launchctl_restart() 
 
 gem_install_or_update() {
   if gem list "$1" --installed > /dev/null; then
@@ -131,15 +118,25 @@ fi
 fancy_echo "Updating Homebrew formulas ..."
 brew update
 
+brew_tap 'gapple/services' # for getting 'brew services'
+
+
 brew_install_or_upgrade 'git'
+
 brew_install_or_upgrade 'postgres'
-brew_launchctl_restart 'postgresql'
+fancy_echo 'Restarting postgres...'
+brew services restart postgresql
+
 brew_install_or_upgrade 'the_silver_searcher'
 brew_install_or_upgrade 'ctags'
 brew_install_or_upgrade 'tmux'
 brew_install_or_upgrade 'reattach-to-user-namespace'
 brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'hub'
+
+brew_install_or_upgrade 'mongo'
+brew_install_or_upgrade 'r'
+brew_cask_install 'rstudio'
 
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
@@ -151,7 +148,7 @@ brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
 brew_install_or_upgrade 'libyaml'
 
-ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
+#ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
 
 eval "$(rbenv init - zsh)"
 
@@ -172,10 +169,10 @@ fancy_echo "Configuring Bundler ..."
 
 brew_install_or_upgrade 'heroku-toolbelt'
 
-if ! command -v rcup >/dev/null; then
-  brew_tap 'thoughtbot/formulae'
-  brew_install_or_upgrade 'rcm'
-fi
+#if ! command -v rcup >/dev/null; then
+#  brew_tap 'thoughtbot/formulae'
+#  brew_install_or_upgrade 'rcm'
+#fi
 
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
