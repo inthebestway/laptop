@@ -18,10 +18,18 @@ brew_install_or_upgrade homebrew/science/r
 
 brew_install_or_upgrade 'jq'
 
-brew_install_or_upgrade 'go'
 
-#TODO: set gopath & gobin
-#go get github.com/jehiah/json2csv 'json2csv'
+
+echo "if [ -f ~/.profile ]; then . ~/.profile; fi" >> ~/.zshrc
+
+# Go utilities
+brew_install_or_upgrade 'go'
+GOPATH=~/devel/gocode
+mkdir $GOPATH
+echo "export GOPATH=$GOPATH" >> ~/.profile 
+echo "export PATH=$PATH:$GOPATH/bin" >> ~/.profile 
+
+go get github.com/jehiah/json2csv
 
 
 brew_install_or_upgrade 'gist'
@@ -33,7 +41,7 @@ brew_install_or_upgrade 'gist'
 
 brew_install_or_upgrade 'pyenv'
 brew_install_or_upgrade pyenv-virtualenv
-echo "eval \"$(pyenv virtualenv-init -)\"" > ~/.bash_profile
+echo "eval \"$(pyenv virtualenv-init -)\"" >> ~/.profile
 #pyenv install 3.4.3
 
 
@@ -44,13 +52,14 @@ cd $EXTRAS
 # Data science toolkit
 
 git clone https://github.com/jeroenjanssens/data-science-toolbox.git
-cd data-science-toolbox
+cd data-science-toolbox/tools
 D=$(pwd)
-for f in $(ls tools) ; do
-       ln -s $D/$f ~/bin/
+for f in * ; do
+	echo $f
+    ln -s $D/$f ~/bin/
 done
 
-echo "PATH=$PATH:~/bin" >> ~/.bash_profile
+#echo "PATH=$PATH:~/bin" >> ~/.zshrc
 
 
 
