@@ -121,6 +121,11 @@ fi
 fancy_echo "Updating Homebrew formulas ..."
 brew update
 
+#install xcode if it doesn't exist.. 
+if [ ! -d $(xcode-select -p) ]; then
+  xcode-select --install
+fi
+
 brew_tap 'gapple/services' # for getting 'brew services'
 
 
