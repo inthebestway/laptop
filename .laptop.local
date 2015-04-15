@@ -12,9 +12,9 @@ brew cask install 'sourcetree'
 brew cask install 'jing'
 brew_install_or_upgrade 'shellcheck'
 
-brew cask install 'xquartz'
+brew cask install 'xquartz' # dependency for R
 brew_install_or_upgrade homebrew/science/r
-
+brew cask install 'rstudio'
 
 brew_install_or_upgrade 'jq'
 
