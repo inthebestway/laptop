@@ -69,6 +69,10 @@ What it sets up
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
 [Tmux]: http://tmux.sourceforge.net/
 [Zsh]: http://www.zsh.org/
+[Oh-my-zsh]: https://github.com/robbyrussell/oh-my-zsh
+[go]: http://golang.org/
+[ds-at-the-commandline]: https://github.com/jeroenjanssens/data-science-at-the-command-line
+
 
 It should take less than 15 minutes to install (depends on your machine).
 
