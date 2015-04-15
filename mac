@@ -43,7 +43,6 @@ if [ ! -f "$HOME/.zshrc" ]; then
 fi
 
 # shellcheck disable=SC2016
-append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
 
 case "$SHELL" in
   */zsh) : ;;
@@ -52,6 +51,11 @@ case "$SHELL" in
       chsh -s "$(which zsh)"
     ;;
 esac
+
+# After changing to zsh -- install oh-my-zsh
+url -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+append_to_zshrc '#config added by laptop script.. '
+append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
 
 
 brew_install_or_upgrade() {
@@ -122,6 +126,14 @@ brew_tap 'gapple/services' # for getting 'brew services'
 
 brew_install_or_upgrade 'git'
 
+
+# Go utilities so you can 'go get'
+brew_install_or_upgrade 'go'
+GOPATH=~/devel/gocode
+mkdir $GOPATH
+append_to_zshrc "export GOPATH=$GOPATH" 
+append_to_zshrc "export PATH=$PATH:$GOPATH/bin"
+
 brew_install_or_upgrade 'postgres'
 fancy_echo 'Restarting postgres...'
 brew services restart postgresql
@@ -134,8 +146,7 @@ brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'hub'
 
 brew_install_or_upgrade 'mongo'
-#brew_install_or_upgrade 'r'
-#brew_cask_install 'rstudio'
+
 
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'

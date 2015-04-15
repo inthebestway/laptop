@@ -17,22 +17,12 @@ brew_install_or_upgrade homebrew/science/r
 brew cask install 'rstudio'
 
 brew_install_or_upgrade 'jq'
+brew_install_or_upgrade 'gist'
 
 
-
-echo "if [ -f ~/.profile ]; then . ~/.profile; fi" >> ~/.zshrc
-
-# Go utilities
-brew_install_or_upgrade 'go'
-GOPATH=~/devel/gocode
-mkdir $GOPATH
-echo "export GOPATH=$GOPATH" >> ~/.profile 
-echo "export PATH=$PATH:$GOPATH/bin" >> ~/.profile 
-
+#go utils
 go get github.com/jehiah/json2csv
 
-
-brew_install_or_upgrade 'gist'
 #brew_install_or_upgrade 'screen'
 
 #brew_install_or_upgrade 'vim'
@@ -41,7 +31,7 @@ brew_install_or_upgrade 'gist'
 
 brew_install_or_upgrade 'pyenv'
 brew_install_or_upgrade pyenv-virtualenv
-echo "eval \"$(pyenv virtualenv-init -)\"" >> ~/.profile
+append_to_zshrc "eval \"$(pyenv virtualenv-init -)\""
 #pyenv install 3.4.3
 
 
@@ -56,14 +46,11 @@ cd data-science-toolbox/tools
 D=$(pwd)
 for f in * ; do
 	echo $f
-    ln -s $D/$f ~/bin/
+    ln -s $D/$f ~/.bin/
 done
 
 #echo "PATH=$PATH:~/bin" >> ~/.zshrc
 
-
-
-url -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 brew cask install 'github'
 
