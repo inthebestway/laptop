@@ -13,11 +13,14 @@ brew cask install 'jing'
 brew_install_or_upgrade 'shellcheck'
 
 brew cask install 'xquartz' # dependency for R
-brew_install_or_upgrade homebrew/science/r
-brew cask install 'rstudio'
+brew_install_or_upgrade homebrew/science/r # This isn't working right now
+brew cask install 'rstudio' # haven't tried yet
 
 brew_install_or_upgrade 'jq'
 brew_install_or_upgrade 'gist'
+brew_install_or_upgrade 'boot2docker'
+brew_install_or_upgrade 'docker'
+
 
 
 #go utils
@@ -30,7 +33,8 @@ go get github.com/jehiah/json2csv
 #brew_install_or_upgrade 'ctags'
 
 brew_install_or_upgrade 'pyenv'
-brew_install_or_upgrade pyenv-virtualenv
+append_to_zshrc eval "\"$(pyenv init -)\""
+brew_install_or_upgrade 'pyenv-virtualenv'
 append_to_zshrc "eval \"$(pyenv virtualenv-init -)\""
 #pyenv install 3.4.3
 
@@ -39,8 +43,8 @@ EXTRAS=~/devel/other
 mkdr -p $EXTRASS=~/devel/other
 mkdir -p $EXTRAS
 cd $EXTRAS
-# Data science toolkit
 
+# Data science toolkit
 git clone https://github.com/jeroenjanssens/data-science-toolbox.git
 cd data-science-toolbox/tools
 D=$(pwd)
@@ -48,8 +52,6 @@ for f in * ; do
 	echo $f
     ln -s $D/$f ~/.bin/
 done
-
-#echo "PATH=$PATH:~/bin" >> ~/.zshrc
 
 
 brew cask install 'github'
