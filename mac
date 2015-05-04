@@ -55,7 +55,7 @@ esac
 # After changing to zsh -- install oh-my-zsh
 url -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 append_to_zshrc '#config added by laptop script.. '
-append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
+append_to_zshrc "export PATH=\"$HOME/.bin:$PATH\""
 
 
 brew_install_or_upgrade() {
@@ -122,7 +122,7 @@ fancy_echo "Updating Homebrew formulas ..."
 brew update
 
 #install xcode if it doesn't exist.. 
-if [ ! -d $(xcode-select -p) ]; then
+if [ ! -d "$(xcode-select -p)" ]; then
   xcode-select --install
 fi
 

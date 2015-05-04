@@ -12,7 +12,6 @@ Requirements
 
 We support:
 
-* [OS X Mavericks (10.9)](https://itunes.apple.com/us/app/os-x-mavericks/id675248567)
 * [OS X Yosemite (10.10)](https://www.apple.com/osx/)
 
 Older versions may work but aren't regularly tested. Bug reports for older
@@ -25,6 +24,8 @@ Download, review, then execute the script:
 
 ```sh
 curl --remote-name https://raw.githubusercontent.com/inthebestway/laptop/master/mac
+curl --remote-name https://raw.githubusercontent.com/inthebestway/laptop/master/.laptop.local
+
 less mac
 sh mac 2>&1 | tee ~/laptop.log
 ```
@@ -49,6 +50,9 @@ What it sets up
 * [The Silver Searcher] for finding things in files
 * [Tmux] for saving project state and switching between projects
 * [Zsh] as your shell
+* [Oh-my-zsh] for more shell goodness
+* [go] 
+* [ds-at-the-commandline] command line utilities
 
 [Bundler]: http://bundler.io/
 [Exuberant Ctags]: http://ctags.sourceforge.net/

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 brew_tap 'caskroom/cask'
 brew_install_or_upgrade 'brew-cask'
@@ -40,8 +40,8 @@ append_to_zshrc "eval \"$(pyenv virtualenv-init -)\""
 
 
 EXTRAS=~/devel/other
-mkdr -p $EXTRASS=~/devel/other
-mkdir -p $EXTRAS
+mkdr -p $EXTRAS=~/devel/other
+mkdir -p "$EXTRAS"
 cd $EXTRAS
 
 # Data science toolkit
@@ -49,8 +49,8 @@ git clone https://github.com/jeroenjanssens/data-science-toolbox.git
 cd data-science-toolbox/tools
 D=$(pwd)
 for f in * ; do
-	echo $f
-    ln -s $D/$f ~/.bin/
+	echo "$f"
+    ln -s "$D/$f" ~/.bin/
 done
 
 
