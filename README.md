@@ -23,8 +23,8 @@ Install
 Download, review, then execute the script:
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/inthebestway/laptop/master/mac
-curl --remote-name https://raw.githubusercontent.com/inthebestway/laptop/master/.laptop.local
+curl --remote-name https://raw.githubusercontent.com/mmatkinson/laptop/master/mac
+curl --remote-name https://raw.githubusercontent.com/mmatkinson/laptop/master/.laptop.local
 
 less mac
 sh mac 2>&1 | tee ~/laptop.log
