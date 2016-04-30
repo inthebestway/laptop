@@ -18,8 +18,7 @@ brew cask install 'rstudio' # haven't tried yet
 
 brew_install_or_upgrade 'jq'
 brew_install_or_upgrade 'gist'
-brew_install_or_upgrade 'boot2docker'
-brew_install_or_upgrade 'docker'
+brew_install_or_upgrade 'docker-machine'
 
 
 
